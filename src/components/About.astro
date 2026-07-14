@@ -11,11 +11,17 @@ const credentials = [
 <section class="section about" id="about">
   <div class="container about__grid">
     <div class="about__portrait reveal">
-      <!-- TODO: replace with a professional photograph of Graeme (portrait, ~4:5). -->
-      <div class="portrait" role="img" aria-label="Portrait of Graeme Jones (photograph to be added)">
-        <span class="portrait__mono">GJ</span>
-        <span class="portrait__cap">Graeme Jones · Executive Advisor</span>
-      </div>
+      <figure class="portrait">
+        <img
+          src="/graeme-jones.jpg"
+          alt="Graeme Jones, Executive Advisor at Fyrefish Technologies"
+          width="896"
+          height="1088"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption class="portrait__cap">Graeme Jones · Executive Advisor</figcaption>
+      </figure>
     </div>
 
     <div class="about__body">
@@ -51,29 +57,34 @@ const credentials = [
     position: relative;
     aspect-ratio: 4 / 5;
     border-radius: var(--radius-lg);
-    background:
-      radial-gradient(120% 80% at 30% 20%, rgba(66,176,170,0.35), transparent 60%),
-      linear-gradient(160deg, var(--ink-3), var(--ink));
+    background: linear-gradient(160deg, var(--ink-3), var(--ink));
     border: 1px solid var(--ink-hair);
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin: 0;
     box-shadow: 0 30px 60px -35px rgba(9,17,15,0.6);
   }
-  .portrait__mono {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(4rem, 12vw, 7rem);
-    color: rgba(255,255,255,0.14);
-    letter-spacing: -0.03em;
+  .portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 18%;
+  }
+  /* Scrim so the caption stays legible over the photo */
+  .portrait::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(15,25,23,0.85), transparent);
+    pointer-events: none;
   }
   .portrait__cap {
     position: absolute;
     left: 1.25rem; bottom: 1.1rem;
-    font-size: 0.8rem;
+    z-index: 1;
+    font-size: 0.82rem;
     letter-spacing: 0.02em;
-    color: var(--text-on-dark-muted);
+    color: var(--text-on-dark);
   }
 
   .about__body h2 { font-size: var(--fs-h2); margin-bottom: 1.5rem; max-width: 20ch; }
