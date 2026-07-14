@@ -1,0 +1,132 @@
+---
+const stages = [
+  { n: '01', title: 'Business Strategy', q: 'What are we trying to achieve?' },
+  { n: '02', title: 'Operating Model', q: 'How should the business operate?', active: true },
+  { n: '03', title: 'Capabilities', q: 'What creates value?' },
+  { n: '04', title: 'Solutions', q: 'How do we enable it?' },
+  { n: '05', title: 'Delivery', q: "What's the best way?" },
+];
+---
+
+<section class="section section--dark framework" id="framework">
+  <div class="container">
+    <div class="section-head center reveal">
+      <p class="eyebrow on-dark" style="justify-content:center">The Framework</p>
+      <h2>Every technology decision should trace back to the business.</h2>
+      <p class="lead">
+        Software isn't your operating model — it's one way of enabling it. The review works back from
+        strategy, not forward from tools.
+      </p>
+    </div>
+
+    <ol class="flow reveal" data-delay="1" aria-label="From business strategy to delivery">
+      {stages.map((s) => (
+        <li class={`flow__step${s.active ? ' is-active' : ''}`}>
+          <span class="flow__n">{s.n}</span>
+          <span class="flow__title">{s.title}</span>
+          <span class="flow__q">{s.q}</span>
+        </li>
+      ))}
+    </ol>
+
+    <figure class="framework__pull reveal">
+      <blockquote>
+        “If we were designing this business from scratch today, how would we want it to operate?”
+      </blockquote>
+    </figure>
+
+    <div class="framework__split reveal" data-delay="1">
+      <div>
+        <h3><span class="dot" style="background:var(--teal-bright)"></span>Differentiating</h3>
+        <p>The capabilities that set you apart. Often worth designing for your organization specifically.</p>
+      </div>
+      <div>
+        <h3><span class="dot" style="background:var(--coral)"></span>Commodity</h3>
+        <p>Payroll, accounting, identity, payments. Long since solved — buy, don't rebuild.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .flow {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    position: relative;
+    counter-reset: none;
+  }
+  .flow__step {
+    position: relative;
+    padding: 1.75rem 1.1rem;
+    border-top: 2px solid var(--ink-hair);
+    transition: border-color 0.3s var(--ease);
+  }
+  .flow__step.is-active { border-top-color: var(--teal); }
+  .flow__step::before {
+    content: "";
+    position: absolute;
+    top: -6px; left: 0;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--ink-hair);
+  }
+  .flow__step.is-active::before { background: var(--teal); box-shadow: 0 0 0 5px rgba(44,138,134,0.2); }
+  .flow__n {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--text-on-dark-faint);
+    margin-bottom: 0.6rem;
+  }
+  .flow__title {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--text-on-dark);
+    margin-bottom: 0.35rem;
+    letter-spacing: -0.01em;
+  }
+  .flow__step.is-active .flow__title { color: var(--teal-bright); }
+  .flow__q { display: block; font-size: 0.9rem; color: var(--text-on-dark-muted); }
+
+  .framework__pull {
+    text-align: center;
+    max-width: 32rem;
+    margin: clamp(3.5rem, 7vw, 5.5rem) auto clamp(2.5rem, 5vw, 3.5rem);
+  }
+  .framework__pull blockquote {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-style: italic;
+    font-size: var(--fs-quote);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--text-on-dark);
+  }
+
+  .framework__split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    max-width: 780px;
+    margin-inline: auto;
+    padding-top: clamp(1.5rem, 3vw, 2.5rem);
+    border-top: 1px solid var(--ink-hair);
+  }
+  .framework__split h3 { display: flex; align-items: center; gap: 0.6rem; font-size: 1.2rem; margin-bottom: 0.5rem; }
+  .framework__split .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+  .framework__split p { color: var(--text-on-dark-muted); font-size: 1rem; }
+
+  @media (max-width: 760px) {
+    .flow { grid-template-columns: 1fr; }
+    .flow__step { border-top: none; border-left: 2px solid var(--ink-hair); padding: 0.9rem 0 0.9rem 1.5rem; }
+    .flow__step.is-active { border-left-color: var(--teal); }
+    .flow__step::before { top: 0; left: -6px; }
+    .framework__split { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+</style>

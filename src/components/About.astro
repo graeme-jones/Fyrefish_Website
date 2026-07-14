@@ -1,0 +1,101 @@
+---
+const credentials = [
+  '30+ years',
+  'Ericsson · Global Telecoms',
+  'Enterprise Software',
+  'Product Strategy',
+  'Business Transformation',
+];
+---
+
+<section class="section about" id="about">
+  <div class="container about__grid">
+    <div class="about__portrait reveal">
+      <!-- TODO: replace with a professional photograph of Graeme (portrait, ~4:5). -->
+      <div class="portrait" role="img" aria-label="Portrait of Graeme Jones (photograph to be added)">
+        <span class="portrait__mono">GJ</span>
+        <span class="portrait__cap">Graeme Jones · Executive Advisor</span>
+      </div>
+    </div>
+
+    <div class="about__body">
+      <p class="eyebrow reveal">About</p>
+      <h2 class="reveal" data-delay="1">Three decades turning technology questions into business clarity.</h2>
+      <div class="prose reveal" data-delay="1">
+        <p>
+          Graeme Jones has spent more than thirty years at the intersection of business and technology — from
+          global telecoms at Ericsson to enterprise software, product strategy and large-scale business
+          transformation.
+        </p>
+        <p>
+          He has led the redesign of enterprise applications used by thousands, operationalized new services
+          for major customers, and helped organizations of every size see past the software to the business
+          underneath. Fyrefish is the distillation of that experience.
+        </p>
+      </div>
+      <ul class="about__creds reveal" data-delay="2">
+        {credentials.map((c) => <li>{c}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: center;
+  }
+  .portrait {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-lg);
+    background:
+      radial-gradient(120% 80% at 30% 20%, rgba(66,176,170,0.35), transparent 60%),
+      linear-gradient(160deg, var(--ink-3), var(--ink));
+    border: 1px solid var(--ink-hair);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 30px 60px -35px rgba(9,17,15,0.6);
+  }
+  .portrait__mono {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(4rem, 12vw, 7rem);
+    color: rgba(255,255,255,0.14);
+    letter-spacing: -0.03em;
+  }
+  .portrait__cap {
+    position: absolute;
+    left: 1.25rem; bottom: 1.1rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    color: var(--text-on-dark-muted);
+  }
+
+  .about__body h2 { font-size: var(--fs-h2); margin-bottom: 1.5rem; max-width: 20ch; }
+  .about__creds {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .about__creds li {
+    font-size: 0.88rem;
+    font-weight: 550;
+    color: var(--text-muted);
+    padding: 0.5rem 0.9rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 100px;
+  }
+
+  @media (max-width: 860px) {
+    .about__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about__portrait { max-width: 340px; }
+  }
+</style>

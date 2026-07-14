@@ -1,0 +1,94 @@
+---
+const misreads = [
+  { wrong: 'A reporting problem', right: 'mistaken for a CRM problem.' },
+  { wrong: 'An operational problem', right: 'mistaken for an AI problem.' },
+  { wrong: 'A business shaped by its software', right: 'instead of software shaped around the business.' },
+];
+---
+
+<section class="section why" id="why">
+  <div class="container">
+    <div class="split">
+      <div class="split__aside">
+        <p class="eyebrow coral reveal">Why It Matters</p>
+        <h2 class="why__title reveal" data-delay="1">
+          Most organizations don't have a technology problem.
+        </h2>
+      </div>
+
+      <div class="why__body">
+        <div class="prose reveal">
+          <p>
+            Every week brings another AI announcement, another platform, another consultant explaining why
+            you need to transform. The instinct is to ask <em>"what should we implement?"</em> — and that is
+            the wrong question.
+          </p>
+          <p>
+            Across three decades in global telecoms, enterprise software and non-profits, the same pattern
+            repeats regardless of size or industry: a <strong>business problem</strong> being solved as if it
+            were a technology one.
+          </p>
+        </div>
+
+        <ul class="why__list reveal" data-delay="1">
+          {misreads.map((m) => (
+            <li>
+              <span class="why__wrong">{m.wrong}</span>
+              <span class="why__right">{m.right}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <figure class="why__quote reveal">
+      <blockquote>
+        Solve the wrong problem, and better software simply gets you to the wrong destination faster.
+      </blockquote>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .why__title { font-size: var(--fs-h2); }
+  .why__body { padding-top: 0.4rem; }
+  .why__list {
+    list-style: none;
+    padding: 0;
+    margin: 2.5rem 0 0;
+    border-top: 1px solid var(--line);
+  }
+  .why__list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 0.9rem;
+    padding: 1.15rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .why__wrong {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--text-strong);
+    letter-spacing: -0.01em;
+  }
+  .why__right { color: var(--text-muted); }
+
+  .why__quote {
+    margin: clamp(3.5rem, 7vw, 6rem) auto 0;
+    max-width: 36rem;
+    text-align: center;
+  }
+  .why__quote blockquote {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-style: italic;
+    font-size: var(--fs-quote);
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    color: var(--text-strong);
+  }
+  .why__quote blockquote::before { content: "“"; color: var(--coral); }
+  .why__quote blockquote::after { content: "”"; color: var(--coral); }
+</style>

@@ -1,0 +1,95 @@
+---
+const stories = [
+  {
+    sector: 'Non-Profit',
+    title: 'The roadmap that was never written',
+    body: 'Asked to define a five-year technology roadmap, we found the real issue was operational visibility — reporting and data scattered across systems that were never designed to work together. Instead of a roadmap, we built a lightweight platform that consolidated it, retired several expensive systems, and gave leadership the view they had been missing.',
+    take: 'The deliverable was never a roadmap. It was clarity.',
+  },
+  {
+    sector: 'Enterprise Software',
+    title: 'When listening to users leads you astray',
+    body: 'Redesigning a large enterprise application, a hundred experienced users offered genuine improvements to the software they knew. Then we asked a different question: what are you actually trying to accomplish? They had unconsciously adapted to the tool — so we redesigned around the business, not the interface.',
+    take: 'They understood the software. Our job was to understand the business.',
+  },
+  {
+    sector: 'Telecommunications',
+    title: 'Designing the business before changing the technology',
+    body: 'A provider won a major customer, with CRM, billing, accounting and network systems already live — replacing them was not an option. We worked across finance, engineering, support and IT to map how information moved, then designed an operating model the new customer could fit into naturally.',
+    take: "The biggest improvement wasn't new software. It was a better operating model.",
+  },
+];
+---
+
+<section class="section section--dark experience" id="experience">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow on-dark">Experience</p>
+      <h2>Selected engagements.</h2>
+      <p class="lead">Every one began as a conversation about technology. None of them ended there.</p>
+    </div>
+
+    <div class="stories">
+      {stories.map((s) => (
+        <article class="story reveal">
+          <div class="story__meta">
+            <span class="story__node" aria-hidden="true"></span>
+            <span class="story__sector">{s.sector}</span>
+          </div>
+          <div class="story__content">
+            <h3>{s.title}</h3>
+            <p class="story__body">{s.body}</p>
+            <p class="story__take">{s.take}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stories { display: grid; gap: 0; }
+  .story {
+    display: grid;
+    grid-template-columns: minmax(0, 0.55fr) minmax(0, 1.45fr);
+    gap: clamp(1.5rem, 4vw, 4rem);
+    padding: clamp(2.25rem, 4vw, 3.25rem) 0;
+    border-top: 1px solid var(--ink-hair);
+  }
+  .story:last-child { border-bottom: 1px solid var(--ink-hair); }
+
+  .story__meta { position: relative; padding-left: 1.5rem; }
+  .story__node {
+    position: absolute;
+    left: 0; top: 0.55rem;
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: var(--ink);
+    border: 2px solid var(--teal);
+  }
+  .story__sector {
+    font-weight: 650;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--teal-bright);
+  }
+  .story__content h3 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1.1rem; letter-spacing: -0.02em; }
+  .story__body { color: var(--text-on-dark-muted); font-size: 1.075rem; line-height: 1.65; max-width: 60ch; }
+  .story__take {
+    margin-top: 1.5rem;
+    padding-left: 1.1rem;
+    border-left: 2px solid var(--coral);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--text-on-dark);
+    letter-spacing: -0.01em;
+  }
+
+  @media (max-width: 760px) {
+    .story { grid-template-columns: 1fr; gap: 1.25rem; }
+    .story__meta { padding-left: 1.5rem; }
+  }
+</style>
