@@ -1,0 +1,100 @@
+---
+// Hero — mirrors the brochure cover: dark, poster-scale headline, flowing accent.
+---
+
+<section class="hero" id="main">
+  <div class="hero__bg" aria-hidden="true">
+    <svg class="hero__lines" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="stream" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#2c8a86" stop-opacity="0"/>
+          <stop offset="45%" stop-color="#38a9a4" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#e04a3a" stop-opacity="0.9"/>
+        </linearGradient>
+      </defs>
+      <g fill="none" stroke="url(#stream)" stroke-width="1.4">
+        <path d="M-50 300 C 300 180, 500 420, 900 300 S 1250 300, 1250 300"/>
+        <path d="M-50 330 C 300 250, 520 400, 900 320 S 1250 320, 1250 320"/>
+        <path d="M-50 270 C 300 120, 480 440, 900 280 S 1250 280, 1250 280"/>
+        <path d="M-50 360 C 320 320, 540 380, 900 350 S 1250 350, 1250 350"/>
+        <path d="M-50 240 C 280 90, 460 470, 900 250 S 1250 250, 1250 250"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="container hero__inner">
+    <p class="eyebrow on-dark">Fyrefish Technologies</p>
+    <h1 class="hero__title">Executive Technology<br />Decision Review</h1>
+    <p class="hero__sub">Executive clarity before expensive technology decisions.</p>
+
+    <div class="hero__cta">
+      <a class="btn btn--primary" href="#get-started">Start a review</a>
+      <a class="btn btn--on-dark" href="#the-case">How it works</a>
+    </div>
+
+    <div class="hero__by">
+      <span class="hero__by-name">Graeme Jones</span>
+      <span class="hero__by-role">Executive Advisor · Business &amp; Technology Strategy</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    background: var(--ink);
+    color: var(--text-on-dark);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.55;
+    mask-image: radial-gradient(120% 90% at 60% 50%, #000 40%, transparent 85%);
+  }
+  .hero__lines { width: 100%; height: 100%; }
+  .hero__lines path { animation: drift 14s ease-in-out infinite alternate; }
+  .hero__lines path:nth-child(2) { animation-delay: -3s; }
+  .hero__lines path:nth-child(3) { animation-delay: -6s; }
+  .hero__lines path:nth-child(4) { animation-delay: -9s; }
+  .hero__lines path:nth-child(5) { animation-delay: -1.5s; }
+  @keyframes drift {
+    from { transform: translateY(-6px); }
+    to   { transform: translateY(10px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__lines path { animation: none; }
+  }
+
+  .hero__inner {
+    padding-block: clamp(5rem, 13vw, 9rem);
+    max-width: 900px;
+  }
+  .hero__title {
+    font-size: clamp(2.6rem, 8.5vw, 5.4rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 0.98;
+    margin-bottom: 1.5rem;
+  }
+  .hero__sub {
+    font-size: clamp(1.15rem, 2.6vw, 1.55rem);
+    color: var(--text-on-dark-muted);
+    max-width: 34ch;
+    margin-bottom: 2.5rem;
+  }
+  .hero__cta { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-bottom: 3.5rem; }
+
+  .hero__by {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--coral);
+    width: fit-content;
+  }
+  .hero__by-name { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; }
+  .hero__by-role { color: var(--text-on-dark-muted); font-size: 0.92rem; }
+</style>

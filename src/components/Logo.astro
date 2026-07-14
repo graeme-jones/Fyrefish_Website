@@ -1,0 +1,39 @@
+---
+export interface Props {
+  variant?: 'light' | 'dark'; // color of the wordmark text
+}
+const { variant = 'dark' } = Astro.props;
+const wordColor = variant === 'dark' ? 'var(--text)' : 'var(--text-on-dark)';
+---
+
+<a class="logo" href="/" aria-label="Fyrefish Technologies — home" style={`--word-color:${wordColor}`}>
+  <svg class="logo__mark" viewBox="0 0 64 64" width="30" height="30" aria-hidden="true">
+    <path d="M40 14c-9 6-18 11-18 22 0 8 6 14 14 14 3 0 6-.9 8.4-2.5-6 .3-10.4-3.6-10.4-9 0-6.6 6-9.7 6-9.7s-1 4 1.6 7.3c2.4 3 6.4 3.4 6.4 8.2 0 1.9-.8 3.6-2 4.9C51 45.6 54 39.7 54 33 54 24 48 18 40 14Z" fill="#e04a3a"/>
+    <path d="M22 36c-4 1.5-7 4.2-9 8 4-2 7.5-2.2 10.5-1.2C22.5 40.6 22 38.4 22 36Z" fill="#2c8a86"/>
+    <circle cx="38.5" cy="24.5" r="2.4" fill="currentColor"/>
+  </svg>
+  <span class="logo__word">
+    Fyrefish<span class="logo__tld"> Technologies</span>
+  </span>
+</a>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--word-color);
+  }
+  .logo__mark { flex: none; color: var(--word-color); }
+  .logo__word {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+  .logo__tld { font-weight: 500; opacity: 0.55; }
+  @media (max-width: 480px) {
+    .logo__tld { display: none; }
+  }
+</style>

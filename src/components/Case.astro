@@ -1,0 +1,128 @@
+---
+const misreads = [
+  { bold: 'A reporting problem', rest: 'mistaken for a CRM problem.' },
+  { bold: 'An operational problem', rest: 'mistaken for an AI problem.' },
+  { bold: 'A business that has adapted', rest: 'to the limits of its software, instead of the reverse.' },
+];
+const decisions = ['Stay', 'Change', 'Automate', 'Buy', 'Build'];
+---
+
+<section class="section case" id="the-case">
+  <div class="container">
+    <div class="case__head reveal">
+      <p class="eyebrow">The Case for a Review</p>
+      <h2>Most organizations don't have<br />a technology problem.</h2>
+      <p class="case__intro">
+        Every week brings another AI announcement, another platform, another consultant explaining why you
+        need digital transformation. Most organizations respond by asking: <em>"What software should we
+        implement?"</em> That's the wrong question.
+      </p>
+      <p class="case__intro">
+        In 30 years across global telecoms, growing technology firms and non-profits, the same pattern
+        repeats regardless of size or industry: they have a <strong>business problem</strong> they're trying
+        to solve with technology.
+      </p>
+    </div>
+
+    <ul class="case__list reveal">
+      {misreads.map((m) => (
+        <li>
+          <span class="dot" aria-hidden="true"></span>
+          <span><strong>{m.bold}</strong> {m.rest}</span>
+        </li>
+      ))}
+    </ul>
+
+    <blockquote class="case__quote reveal">
+      <p>Solve the wrong problem and better software simply gets you to the wrong destination faster.</p>
+      <cite>The Central Question</cite>
+    </blockquote>
+
+    <div class="case__decisions reveal">
+      <p class="case__decisions-lead">
+        The review steps back from technology to understand how the business should operate. Only then do
+        the technology decisions get made:
+      </p>
+      <div class="chips">
+        {decisions.map((d) => <span class="chip">{d}</span>)}
+      </div>
+      <p class="case__punch">
+        And most importantly: <span>what shouldn't be built at all?</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .case__head { max-width: 62ch; }
+  .case h2 { font-size: clamp(2rem, 5vw, 3.25rem); margin-bottom: 1.75rem; }
+  .case__intro { font-size: 1.12rem; color: var(--text-muted); margin-bottom: 1.25rem; max-width: 64ch; }
+  .case__intro em { color: var(--text); font-style: italic; }
+  .case__intro strong { color: var(--text); }
+
+  .case__list {
+    list-style: none;
+    padding: 0;
+    margin: 2.5rem 0 3.5rem;
+    display: grid;
+    gap: 1.1rem;
+    max-width: 64ch;
+  }
+  .case__list li { display: flex; gap: 1rem; align-items: baseline; font-size: 1.1rem; }
+  .case__list .dot {
+    flex: none;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--coral);
+    transform: translateY(-1px);
+  }
+  .case__list strong { color: var(--text); }
+  .case__list li { color: var(--text-muted); }
+
+  .case__quote {
+    background: var(--ink);
+    color: var(--text-on-dark);
+    border-radius: var(--radius-lg);
+    padding: clamp(2.5rem, 6vw, 4rem);
+    text-align: center;
+    margin: 0 0 3.5rem;
+  }
+  .case__quote p {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.4rem, 3.6vw, 2.1rem);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    max-width: 22ch;
+    margin: 0 auto 1.25rem;
+  }
+  .case__quote cite {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--teal-bright);
+  }
+
+  .case__decisions { text-align: center; max-width: 720px; margin-inline: auto; }
+  .case__decisions-lead { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.75rem; }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+  }
+  .chip {
+    background: var(--paper-2);
+    color: var(--teal);
+    font-family: var(--font-display);
+    font-weight: 700;
+    padding: 0.7rem 1.4rem;
+    border-radius: 10px;
+    font-size: 1.05rem;
+  }
+  .case__punch { font-size: 1.15rem; color: var(--text-muted); }
+  .case__punch span { color: var(--coral); font-weight: 700; font-family: var(--font-display); }
+</style>

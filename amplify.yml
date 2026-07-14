@@ -1,0 +1,19 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        # Reproducible installs from the committed lockfile.
+        - npm ci
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    # Astro static output lives in dist/.
+    baseDirectory: dist
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+      - .astro/**/*

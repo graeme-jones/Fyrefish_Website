@@ -1,0 +1,148 @@
+---
+import Logo from './Logo.astro';
+
+const links = [
+  { href: '#the-case', label: 'The Case' },
+  { href: '#process', label: 'Process' },
+  { href: '#findings', label: 'Findings' },
+  { href: '#deliverables', label: 'Deliverables' },
+];
+---
+
+<header class="nav" data-nav>
+  <div class="container nav__inner">
+    <Logo variant="dark" />
+
+    <nav class="nav__links" aria-label="Primary">
+      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    </nav>
+
+    <div class="nav__actions">
+      <a class="btn btn--primary nav__cta" href="#get-started">Start a review</a>
+      <button class="nav__toggle" data-nav-toggle aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="nav__mobile" id="mobile-menu" data-nav-mobile hidden>
+    {links.map((l) => <a href={l.href} data-nav-close>{l.label}</a>)}
+    <a class="btn btn--primary" href="#get-started" data-nav-close>Start a review</a>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s var(--ease), background-color 0.3s var(--ease);
+  }
+  .nav[data-scrolled] {
+    border-bottom-color: var(--line);
+    background: rgba(255, 255, 255, 0.92);
+  }
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    gap: 1rem;
+  }
+  .nav__links {
+    display: flex;
+    gap: 2rem;
+    margin-inline: auto;
+    font-weight: 500;
+    font-size: 0.98rem;
+  }
+  .nav__links a {
+    color: var(--text-muted);
+    transition: color 0.2s var(--ease);
+  }
+  .nav__links a:hover { color: var(--text); }
+  .nav__actions { display: flex; align-items: center; gap: 0.75rem; }
+  .nav__cta { padding: 0.6rem 1.1rem; font-size: 0.95rem; }
+
+  .nav__toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    padding: 10px;
+  }
+  .nav__toggle span {
+    height: 2px;
+    width: 100%;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform 0.25s var(--ease), opacity 0.2s var(--ease);
+  }
+  .nav[data-open] .nav__toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav[data-open] .nav__toggle span:nth-child(2) { opacity: 0; }
+  .nav[data-open] .nav__toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav__mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1rem var(--gutter) 1.5rem;
+    border-top: 1px solid var(--line);
+    background: #fff;
+  }
+  /* Respect the [hidden] attribute — author display would otherwise override the UA rule. */
+  .nav__mobile[hidden] { display: none; }
+  .nav__mobile a:not(.btn) {
+    padding: 0.75rem 0;
+    font-weight: 550;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav__mobile .btn { margin-top: 0.75rem; justify-content: center; }
+
+  @media (max-width: 860px) {
+    .nav__links, .nav__cta { display: none; }
+    .nav__toggle { display: flex; }
+  }
+  @media (min-width: 861px) {
+    .nav__mobile { display: none; }
+  }
+</style>
+
+<script>
+  const nav = document.querySelector('[data-nav]');
+  const toggle = document.querySelector('[data-nav-toggle]');
+  const mobile = document.querySelector('[data-nav-mobile]');
+
+  // Sticky border once scrolled.
+  const onScroll = () => {
+    if (window.scrollY > 8) nav?.setAttribute('data-scrolled', '');
+    else nav?.removeAttribute('data-scrolled');
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Mobile menu toggle.
+  const setOpen = (open: boolean) => {
+    if (!nav || !mobile || !toggle) return;
+    if (open) {
+      nav.setAttribute('data-open', '');
+      mobile.hidden = false;
+    } else {
+      nav.removeAttribute('data-open');
+      mobile.hidden = true;
+    }
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
+  toggle?.addEventListener('click', () => setOpen(mobile?.hidden ?? true));
+  document.querySelectorAll('[data-nav-close]').forEach((a) =>
+    a.addEventListener('click', () => setOpen(false))
+  );
+</script>

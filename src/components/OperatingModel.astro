@@ -1,0 +1,169 @@
+---
+const stages = [
+  { n: '01', title: 'Business Strategy', q: 'What are we trying to achieve?' },
+  { n: '02', title: 'Operating Model', q: 'How should the business operate?', active: true },
+  { n: '03', title: 'Business Capabilities', q: 'What capabilities create value?' },
+  { n: '04', title: 'Business Solutions', q: 'How do we enable them?' },
+  { n: '05', title: 'Delivery', q: "What's the most effective way?" },
+];
+---
+
+<section class="section section--paper-2 opmodel">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow teal">Definition</p>
+      <h2>The Business Operating Model</h2>
+      <p class="lead">
+        Every organization has one, whether it's documented or not. It's how work flows, how decisions get
+        made, how information moves and, ultimately, how the organization creates value.
+      </p>
+    </div>
+
+    <div class="opmodel__grid">
+      <div class="opmodel__prose reveal">
+        <p>
+          Most operating models are never consciously designed. They evolve. Products launch, teams grow,
+          departments reorganize, software is purchased, spreadsheets appear and manual workarounds harden
+          into permanent process. Before long the organization is adapting to its systems rather than the
+          reverse.
+        </p>
+        <blockquote class="opmodel__pull">
+          "If we were designing this business from scratch today, how would we want it to operate?"
+        </blockquote>
+        <p>
+          Software isn't the operating model — it's one way of enabling it. The goal isn't more software.
+          It's the right capabilities, built the most effective way.
+        </p>
+      </div>
+    </div>
+
+    <div class="opmodel__flow reveal" role="list" aria-label="Every technology decision should trace back to a business strategy">
+      <p class="opmodel__flow-label">Every technology decision should trace back to a business strategy</p>
+      <div class="flow">
+        {stages.map((s, i) => (
+          <>
+            <div class={`flow__step${s.active ? ' flow__step--active' : ''}`} role="listitem">
+              <span class="flow__n">{s.n}</span>
+              <span class="flow__title">{s.title}</span>
+              <span class="flow__q">{s.q}</span>
+            </div>
+            {i < stages.length - 1 && <span class="flow__arrow" aria-hidden="true">›</span>}
+          </>
+        ))}
+      </div>
+    </div>
+
+    <div class="opmodel__split reveal">
+      <div class="split-card split-card--teal">
+        <h3><span class="split-dot" style="background:var(--teal)"></span>Differentiating</h3>
+        <p>Capabilities that create competitive advantage. Often worth designing specifically for your organization.</p>
+      </div>
+      <div class="split-card split-card--coral">
+        <h3><span class="split-dot" style="background:var(--coral)"></span>Commodity</h3>
+        <p>Payroll, accounting, identity, payments. Already solved extremely well — buy, don't rebuild.</p>
+      </div>
+    </div>
+
+    <p class="opmodel__foot reveal">
+      Knowing which is which is a primary outcome of the review — and it makes technology a consequence of
+      strategy rather than the starting point.
+    </p>
+  </div>
+</section>
+
+<style>
+  .opmodel__grid { margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+  .opmodel__prose { max-width: 68ch; }
+  .opmodel__prose p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.08rem; }
+  .opmodel__pull {
+    border-left: 3px solid var(--coral);
+    padding-left: 1.25rem;
+    margin: 1.75rem 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.6vw, 1.55rem);
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  /* Strategy → delivery flow strip */
+  .opmodel__flow {
+    background: var(--ink);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.5rem, 3.5vw, 2.5rem);
+    margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+  }
+  .opmodel__flow-label {
+    text-align: center;
+    color: var(--teal-bright);
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .flow {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: stretch;
+    gap: 0.25rem;
+  }
+  .flow__step {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    text-align: center;
+    padding: 1.25rem 0.75rem;
+    border-radius: var(--radius);
+    background: var(--ink-3);
+    color: var(--text-on-dark);
+  }
+  .flow__step--active { background: var(--teal); }
+  .flow__n { font-family: var(--font-display); font-weight: 700; font-size: 0.85rem; opacity: 0.7; }
+  .flow__title { font-family: var(--font-display); font-weight: 700; font-size: 1rem; line-height: 1.15; }
+  .flow__q { font-size: 0.82rem; color: var(--text-on-dark-muted); }
+  .flow__step--active .flow__q { color: rgba(255,255,255,0.85); }
+  .flow__arrow { display: none; color: var(--text-on-dark-muted); align-self: center; font-size: 1.5rem; }
+
+  @media (max-width: 720px) {
+    .flow {
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+    }
+    .flow__step { flex-direction: row; align-items: baseline; text-align: left; gap: 0.75rem; }
+    .flow__step .flow__q { margin-left: auto; text-align: right; }
+  }
+
+  /* Differentiating vs commodity */
+  .opmodel__split {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+  .split-card {
+    background: var(--paper);
+    border-radius: var(--radius);
+    padding: clamp(1.5rem, 3vw, 2rem);
+    border: 1px solid var(--line);
+  }
+  .split-card h3 { display: flex; align-items: center; gap: 0.6rem; font-size: 1.35rem; margin-bottom: 0.75rem; }
+  .split-dot { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+  .split-card p { color: var(--text-muted); }
+
+  .opmodel__foot {
+    text-align: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-style: italic;
+    font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+    max-width: 60ch;
+    margin-inline: auto;
+    color: var(--text);
+  }
+
+  @media (max-width: 620px) {
+    .opmodel__split { grid-template-columns: 1fr; }
+  }
+</style>

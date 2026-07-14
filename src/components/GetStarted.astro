@@ -1,0 +1,155 @@
+---
+const CONTACT_EMAIL = 'graeme.jones@fyrefish.com';
+const subject = encodeURIComponent('Executive Technology Decision Review — enquiry');
+const mailto = `mailto:${CONTACT_EMAIL}?subject=${subject}`;
+
+const fitFor = [
+  "You're planning a significant AI or automation initiative.",
+  "You're replacing or consolidating major business systems.",
+  'Your business is growing faster than your operations.',
+  'Leadership lacks confidence in operational reporting.',
+  'Manual processes have become increasingly complex.',
+  "You're deciding whether to build, buy or customize.",
+  "You're making a significant technology investment.",
+];
+const yourTime = ['3–5 executive interviews', 'Two collaborative working sessions', 'One executive presentation'];
+const youReceive = [
+  'Executive Briefing',
+  'Operating Model Assessment',
+  'Capability Assessment',
+  'AI & Automation Assessment',
+  'Build vs. Buy Recommendations',
+  '12–18 Month Roadmap',
+];
+---
+
+<section class="section section--dark getstarted" id="get-started">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow on-dark">Get Started</p>
+      <h2>Is a Business Operating Model Review right for you?</h2>
+      <p class="lead">This review creates the most value when:</p>
+    </div>
+
+    <ul class="getstarted__fit reveal">
+      {fitFor.map((f) => (
+        <li>
+          <svg class="check" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>{f}</span>
+        </li>
+      ))}
+    </ul>
+
+    <div class="engagement reveal">
+      <div class="engagement__top">
+        <div>
+          <p class="engagement__label">Typical Engagement</p>
+          <p class="engagement__big">2–3 <span>weeks</span></p>
+        </div>
+        <div>
+          <p class="engagement__label">&nbsp;</p>
+          <p class="engagement__big engagement__big--coral">$7,500 <span>USD, starting investment</span></p>
+        </div>
+      </div>
+
+      <div class="engagement__cols">
+        <div>
+          <p class="engagement__label">Your Time</p>
+          <ul>{yourTime.map((t) => <li>{t}</li>)}</ul>
+        </div>
+        <div>
+          <p class="engagement__label">You Receive</p>
+          <ul>{youReceive.map((t) => <li>{t}</li>)}</ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="getstarted__cta reveal">
+      <p class="getstarted__close">Make the next decision with confidence.</p>
+      <a class="btn btn--primary btn--lg" href={mailto}>Start a conversation</a>
+      <p class="getstarted__note">
+        Complete this review before your next significant technology decision — or use it as the starting
+        point for a broader transformation.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .getstarted__fit {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 clamp(2.5rem, 5vw, 3.5rem);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.9rem 2rem;
+    max-width: 820px;
+  }
+  .getstarted__fit li { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 1.08rem; }
+  .check { width: 22px; height: 22px; flex: none; color: var(--teal-bright); margin-top: 2px; }
+
+  .engagement {
+    background: var(--ink-2);
+    border: 1px solid var(--line-dark);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+    margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+  }
+  .engagement__top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    padding-bottom: 1.75rem;
+    margin-bottom: 1.75rem;
+    border-bottom: 1px solid var(--line-dark);
+  }
+  .engagement__label {
+    color: var(--teal-bright);
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .engagement__big {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.2rem, 6vw, 3.25rem);
+    line-height: 1;
+  }
+  .engagement__big span {
+    display: block;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-on-dark-muted);
+    margin-top: 0.6rem;
+  }
+  .engagement__big--coral { color: var(--coral); }
+  .engagement__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .engagement__cols ul { list-style: none; padding: 0; display: grid; gap: 0.4rem; }
+  .engagement__cols li { color: var(--text-on-dark-muted); }
+
+  .getstarted__cta { text-align: center; }
+  .getstarted__close {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    margin-bottom: 1.5rem;
+  }
+  .btn--lg { padding: 1rem 2rem; font-size: 1.1rem; }
+  .getstarted__note {
+    color: var(--text-on-dark-muted);
+    max-width: 54ch;
+    margin: 1.5rem auto 0;
+    font-size: 0.98rem;
+  }
+
+  @media (max-width: 640px) {
+    .getstarted__fit { grid-template-columns: 1fr; }
+    .engagement__top, .engagement__cols { grid-template-columns: 1fr; }
+    .engagement__top > div:nth-child(2) .engagement__label { display: none; }
+  }
+</style>
