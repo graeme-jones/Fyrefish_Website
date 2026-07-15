@@ -33,7 +33,6 @@ const stories = [
       {stories.map((s) => (
         <article class="story reveal">
           <div class="story__meta">
-            <span class="story__node" aria-hidden="true"></span>
             <span class="story__sector">{s.sector}</span>
           </div>
           <div class="story__content">
@@ -51,45 +50,48 @@ const stories = [
   .stories { display: grid; gap: 0; }
   .story {
     display: grid;
-    grid-template-columns: minmax(0, 0.55fr) minmax(0, 1.45fr);
-    gap: clamp(1.5rem, 4vw, 4rem);
-    padding: clamp(2.25rem, 4vw, 3.25rem) 0;
+    grid-template-columns: minmax(0, 0.4fr) minmax(0, 1.6fr);
+    gap: clamp(1.25rem, 4vw, 4rem);
+    padding: clamp(3rem, 6vw, 5.5rem) 0;
     border-top: 1px solid var(--ink-hair);
   }
-  .story:last-child { border-bottom: 1px solid var(--ink-hair); }
+  .story:first-child { border-top: none; padding-top: 0; }
 
-  .story__meta { position: relative; padding-left: 1.5rem; }
-  .story__node {
-    position: absolute;
-    left: 0; top: 0.55rem;
-    width: 11px; height: 11px;
-    border-radius: 50%;
-    background: var(--ink);
-    border: 2px solid var(--teal);
-  }
   .story__sector {
+    display: inline-block;
+    padding-top: 0.65rem;
     font-weight: 650;
     font-size: 0.78rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--teal-bright);
   }
-  .story__content h3 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1.1rem; letter-spacing: -0.02em; }
-  .story__body { color: var(--text-on-dark-muted); font-size: 1.075rem; line-height: 1.65; max-width: 60ch; }
+  .story__content h3 {
+    font-size: clamp(1.8rem, 3.4vw, 2.65rem);
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.025em;
+    max-width: 20ch;
+  }
+  .story__body {
+    color: var(--text-on-dark-muted);
+    font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+    line-height: 1.7;
+    max-width: 54ch;
+  }
   .story__take {
-    margin-top: 1.5rem;
-    padding-left: 1.1rem;
-    border-left: 2px solid var(--coral);
+    margin-top: 2rem;
     font-family: var(--font-display);
     font-weight: 700;
     font-style: italic;
-    font-size: 1.15rem;
+    font-size: clamp(1.25rem, 2vw, 1.55rem);
     color: var(--text-on-dark);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
+    max-width: 40ch;
   }
 
   @media (max-width: 760px) {
-    .story { grid-template-columns: 1fr; gap: 1.25rem; }
-    .story__meta { padding-left: 1.5rem; }
+    .story { grid-template-columns: 1fr; gap: 1rem; }
+    .story__sector { padding-top: 0; }
   }
 </style>

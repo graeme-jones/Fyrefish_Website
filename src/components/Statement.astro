@@ -1,0 +1,29 @@
+---
+// A single editorial statement — the emotional anchor of the page.
+// No eyebrow, no supporting copy, no buttons, no graphics. Whitespace and type only.
+---
+
+<section class="section--dark statement">
+  <div class="container">
+    <p class="statement__text reveal">
+      <span class="statement__quiet">Technology doesn't transform a business.</span>
+      <span class="statement__loud">Better decisions do.</span>
+    </p>
+  </div>
+</section>
+
+<style>
+  .statement {
+    padding-block: clamp(8rem, 18vw, 16rem);
+  }
+  .statement__text {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.3rem, 5.4vw, 4.4rem);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    max-width: 20ch;
+  }
+  .statement__quiet { color: var(--text-on-dark-faint); display: block; }
+  .statement__loud { color: var(--text-on-dark); display: block; }
+</style>

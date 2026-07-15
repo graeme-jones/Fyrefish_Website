@@ -90,19 +90,23 @@ const credentials = [
   .about__body h2 { font-size: var(--fs-h2); margin-bottom: 1.5rem; max-width: 20ch; }
   .about__creds {
     list-style: none;
-    padding: 0;
-    margin: 2rem 0 0;
+    padding: clamp(1.75rem, 3vw, 2.5rem) 0 0;
+    margin: clamp(1.75rem, 3vw, 2.5rem) 0 0;
+    border-top: 1px solid var(--line);
     display: flex;
     flex-wrap: wrap;
-    gap: 0.6rem;
-  }
-  .about__creds li {
-    font-size: 0.88rem;
+    align-items: center;
+    gap: 0.5rem 1.1rem;
+    font-size: 0.9rem;
     font-weight: 550;
     color: var(--text-muted);
-    padding: 0.5rem 0.9rem;
-    border: 1px solid var(--line-strong);
-    border-radius: 100px;
+  }
+  .about__creds li { display: inline-flex; align-items: center; gap: 1.1rem; }
+  .about__creds li:not(:last-child)::after {
+    content: "";
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--line-strong);
   }
 
   @media (max-width: 860px) {

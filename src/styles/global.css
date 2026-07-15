@@ -52,7 +52,7 @@
   --maxw: 1240px;
   --maxw-text: 46rem;      /* reading measure for editorial columns            */
   --gutter: clamp(1.25rem, 4.5vw, 3rem);
-  --section-y: clamp(5rem, 10vw, 9.5rem);
+  --section-y: clamp(6.5rem, 12vw, 12rem);
   --radius-sm: 10px;
   --radius: 16px;
   --radius-lg: 24px;
@@ -153,7 +153,7 @@ h1, h2, h3, h4 {
 /* Section header used across editorial sections.
    NOTE: use rem, not ch — ch resolves against this container's small body font,
    which would wrap the large heading inside far too narrowly. */
-.section-head { max-width: 40rem; margin-bottom: clamp(2.75rem, 5vw, 4.25rem); }
+.section-head { max-width: 40rem; margin-bottom: clamp(3.25rem, 5.5vw, 5rem); }
 .section-head.center { margin-inline: auto; text-align: center; }
 .section-head h2 { font-size: var(--fs-h2); margin-bottom: 1.1rem; }
 .section-head .lead { max-width: 52ch; }
