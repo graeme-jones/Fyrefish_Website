@@ -24,7 +24,7 @@ const links = [
     </nav>
 
     <div class="nav__actions">
-      <a class="btn btn--primary nav__cta" href="/#contact">Book a Discussion</a>
+      <a class="btn btn--primary nav__cta" href="/#contact">Let's talk</a>
       <button class="nav__toggle" data-nav-toggle aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
@@ -33,7 +33,7 @@ const links = [
 
   <div class="nav__mobile" id="mobile-menu" data-nav-mobile hidden>
     {links.map((l) => <a href={l.href} data-nav-close>{l.label}</a>)}
-    <a class="btn btn--primary" href="/#contact" data-nav-close>Book a Discussion</a>
+    <a class="btn btn--primary" href="/#contact" data-nav-close>Let's talk</a>
   </div>
 </header>
 

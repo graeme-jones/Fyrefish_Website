@@ -20,7 +20,7 @@ export async function GET(context: APIContext) {
     .map((slug) => articles.find((a) => a.id === slug))
     .filter((a): a is NonNullable<typeof a> => Boolean(a));
 
-  const body = `# Fyrefish Technologies
+  const body = `# Fyrefish
 
 > Executive advisory practice of Graeme Jones. Plain-language guidance on making better technology, AI and automation decisions — grounded in understanding the business before the technology.
 

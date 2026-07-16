@@ -1,12 +1,13 @@
 ---
 export interface Props {
   uid?: string; // unique suffix for gradient ids (multiple logos per page)
+  suffix?: boolean; // render the " Technologies" wordmark suffix (footer only)
 }
-const { uid = 'a' } = Astro.props;
+const { uid = 'a', suffix = false } = Astro.props;
 const g = `fyre-${uid}`;
 ---
 
-<a class="logo" href="/" aria-label="Fyrefish Technologies — home">
+<a class="logo" href="/" aria-label={`Fyrefish${suffix ? ' Technologies' : ''} — home`}>
   <svg class="logo__mark" viewBox="0 0 168.5 66.3" width="66" height="26" aria-hidden="true">
     <defs>
       <!-- Brand recolor: flame tail (coral) → head (teal). -->
@@ -24,7 +25,7 @@ const g = `fyre-${uid}`;
     <path fill="currentColor" opacity="0.85" d="M135.2,17c-6.4-1.9-8.4-.1-8.4-.1a4.1,4.1,0,0,1,2.5.3,7.7,7.7,0,0,0,5.4,7.3,14.3,14.3,0,0,0,9.6-.4A15.9,15.9,0,0,0,135.2,17Z"/>
   </svg>
   <span class="logo__word">
-    Fyrefish<span class="logo__tld"> Technologies</span>
+    Fyrefish{suffix && <span class="logo__tld"> Technologies</span>}
   </span>
 </a>
 
