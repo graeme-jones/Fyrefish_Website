@@ -3,6 +3,9 @@ frontend:
   phases:
     preBuild:
       commands:
+        # Match the repo's Node requirement (engines >=22.12.0; see .nvmrc).
+        - nvm install 22
+        - nvm use 22
         # Reproducible installs from the committed lockfile.
         - npm ci
     build:
