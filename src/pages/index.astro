@@ -11,9 +11,13 @@ import Experience from '../components/Experience.astro';
 import About from '../components/About.astro';
 import FinalCta from '../components/FinalCta.astro';
 import Footer from '../components/Footer.astro';
+import { siteGraph } from '../lib/schema';
+
+const base = (Astro.site ?? new URL(Astro.url.origin)).href.replace(/\/$/, '');
+const jsonLd = siteGraph(base, `${base}/wave-poster.jpg`);
 ---
 
-<Base>
+<Base jsonLd={jsonLd}>
   <Nav overHero={true} />
   <main>
     <Hero />

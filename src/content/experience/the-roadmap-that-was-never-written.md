@@ -1,0 +1,102 @@
+---
+title: "The roadmap that was never written"
+category: "Non-Profit"
+order: 1
+pubDate: 2026-07-14
+hook:
+  - "\"That's where I want it.\""
+  - "He pointed to a blank wall behind his desk."
+  - "\"Five feet wide. Four feet high. A glossy five-year technology roadmap.\""
+homepageExcerpt: "A client wanted a five-year technology roadmap for his wall. Starting with the business instead of the systems revealed there was nothing for technology to align to — only operational information that had quietly turned into documents, and a leadership team that could no longer see its own organization."
+intro: "A client had waited almost two years to fund a glossy five-year technology roadmap. But starting where I always start — with the business rather than the systems — there was no strategic agenda for technology to serve. The real problem was visibility: operational information had been extracted, analysed and filed away as documents until leadership could no longer answer basic questions about its own organization. The roadmap was never the point; knowing which problems were worth solving was."
+lesson:
+  - "The best time to challenge a technology decision is before the organization has committed to solving the wrong problem."
+relatedKnowledge:
+  - "should-we-replace-our-crm"
+  - "what-is-an-operating-model"
+  - "is-technology-really-the-problem"
+seoTitle: "The Roadmap That Was Never Written | Graeme Jones"
+metaDescription: "An engagement to build a five-year technology roadmap that became something else entirely — when the real problem turned out to be operational visibility, not technology."
+---
+
+He had waited almost two years to secure the budget. Now, finally, he had brought me in specifically to help create it.
+
+I expected a fairly normal engagement: assess the systems, map the gaps, sequence the investments and eventually hang something impressive on that wall.
+
+And I started where I always start.
+
+Not with the technology.
+
+With the business.
+
+"What are your business objectives over the next five years?"
+
+The answer surprised me.
+
+There really wasn't a strategic business agenda — not in the way the question assumed. The organization wasn't trying to expand. They weren't entering new markets. They weren't reducing headcount. They already served most of their industry.
+
+Technology had nothing obvious to align itself with.
+
+For a moment, I genuinely wondered why they had hired me at all.
+
+Then leadership kept returning to the same frustration: how hard it was to answer questions from the Board.
+
+The information wasn't missing. It existed.
+
+But every answer had to be assembled by hand. Some of it lived in business systems. Some in spreadsheets. Some buried inside documents.
+
+People were spending their time collecting information rather than understanding it.
+
+That was the real problem.
+
+It wasn't reporting.
+
+It was visibility.
+
+That became the turning point.
+
+Instead of producing a five-year technology roadmap, we started talking about the information leadership actually needed to run the organization. What decisions were hard to make today? What took days to assemble? Which questions could no one answer with confidence?
+
+Once those questions were on the table, the roadmap almost became secondary.
+
+We focused on the next 30 days. Then 60. Then 90. Six months. A year.
+
+Beyond that, we talked about direction rather than detailed plans. Technology evolves too quickly to pretend anyone can accurately prescribe the next five years — especially now, in the age of AI. A glossy plan on the wall would have been out of date before it could be printed and framed.
+
+The confirmation came from an unlikely place.
+
+A software engineer had been approved to spend six months reorganizing SharePoint — for an organization of only eleven people.
+
+At first, the effort simply seemed excessive. Then I asked a different question.
+
+"What, exactly, is stored in SharePoint?"
+
+The answer changed everything.
+
+It wasn't just documents. It was the organization's operational knowledge.
+
+Data had been pulled out of operational systems. Analysed in spreadsheets. Summarized into reports. Then filed back into SharePoint — because that was where people knew to look for it.
+
+Their most valuable business information no longer lived inside the systems that ran the business. It had quietly become documents.
+
+I checked that understanding with them, and suddenly their reporting struggles made complete sense.
+
+They didn't need a better SharePoint. They didn't need someone to reorganize documents.
+
+They needed operational information to stay operational — and only then should reporting sit on top of it.
+
+So I suggested we build a simple visual mock-up. Not because they'd asked for software, but because I thought it would help leadership see what real operational visibility could feel like.
+
+While building it, I made another discovery.
+
+The business itself was remarkably simple.
+
+Almost all of the complexity lived in the tangle of systems supporting the work — not in the work itself.
+
+What started as a reporting prototype slowly became something larger. The question quietly shifted. It stopped being "which system should we add?" and became "how should we simplify the landscape altogether?"
+
+I'll leave out the details of what we eventually built. That was never really the point.
+
+Because looking back, I don't think they hired me to produce a roadmap.
+
+I think they hired me to help them understand which problems were actually worth solving.

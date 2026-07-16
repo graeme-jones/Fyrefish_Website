@@ -6,14 +6,48 @@ import '../styles/global.css';
 export interface Props {
   title?: string;
   description?: string;
+  /** 'website' for landing pages, 'article' for long-form knowledge. */
+  type?: 'website' | 'article';
+  /** Distinct Open Graph title/description; fall back to title/description. */
+  ogTitle?: string;
+  ogDescription?: string;
+  /** Absolute canonical override; else derived from the current route. */
+  canonical?: string;
+  /** Social share image (absolute path from site root, e.g. /wave-poster.jpg). */
+  image?: string;
+  /** article:* metadata — only emitted when type === 'article'. */
+  publishedTime?: string;
+  modifiedTime?: string;
+  section?: string;
+  /** One or more JSON-LD objects injected as <script type="application/ld+json">. */
+  jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
+  /** Set true to keep a page out of search/AI indexes. */
+  noindex?: boolean;
 }
 
 const {
   title = 'Fyrefish Technologies — Executive Technology Decision Review',
   description = 'Executive clarity before expensive technology decisions. A Business Operating Model Review by Graeme Jones — understand the business before deciding on the technology.',
+  type = 'website',
+  ogTitle,
+  ogDescription,
+  canonical: canonicalOverride,
+  image = '/wave-poster.jpg',
+  publishedTime,
+  modifiedTime,
+  section,
+  jsonLd,
+  noindex = false,
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
+const site = Astro.site ?? new URL(Astro.url.origin);
+const canonical = canonicalOverride ?? new URL(Astro.url.pathname, site).href;
+const imageUrl = new URL(image, site).href;
+const ogTitleFinal = ogTitle ?? title;
+const ogDescriptionFinal = ogDescription ?? description;
+
+// Normalise JSON-LD to an array so pages can pass one object or several.
+const ldBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 ---
 
 <!doctype html>
@@ -25,18 +59,47 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2c8a86" />
     <meta name="theme-color" content="#14211e" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Fyrefish Knowledge — executive technology decisions"
+      href={new URL('/rss.xml', site).href}
+    />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content="Fyrefish Technologies" />
+    <meta property="og:title" content={ogTitleFinal} />
+    <meta property="og:description" content={ogDescriptionFinal} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={imageUrl} />
+    {type === 'article' && publishedTime && (
+      <meta property="article:published_time" content={publishedTime} />
+    )}
+    {type === 'article' && modifiedTime && (
+      <meta property="article:modified_time" content={modifiedTime} />
+    )}
+    {type === 'article' && (
+      <meta property="article:author" content="Graeme Jones" />
+    )}
+    {type === 'article' && section && (
+      <meta property="article:section" content={section} />
+    )}
+
+    <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:title" content={ogTitleFinal} />
+    <meta name="twitter:description" content={ogDescriptionFinal} />
+    <meta name="twitter:image" content={imageUrl} />
+
+    {ldBlocks.map((block) => (
+      <script type="application/ld+json" set:html={JSON.stringify(block)} />
+    ))}
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>

@@ -1,0 +1,133 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { getPublishedArticles } from '../../lib/knowledge';
+import { collectionPageLd } from '../../lib/schema';
+
+const articles = await getPublishedArticles();
+
+// Group by category. Preferred order first; any new category appends alphabetically.
+const CATEGORY_ORDER = [
+  'Foundations',
+  'Diagnosis',
+  'Systems & Vendors',
+  'Build vs. Buy',
+  'AI & Automation',
+  'Transformation',
+  'Product & Delivery',
+];
+const categories = [...new Set(articles.map((a) => a.data.category))].sort((a, b) => {
+  const ai = CATEGORY_ORDER.indexOf(a);
+  const bi = CATEGORY_ORDER.indexOf(b);
+  if (ai !== -1 || bi !== -1) return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+  return a.localeCompare(b);
+});
+const grouped = categories.map((category) => ({
+  category,
+  items: articles
+    .filter((a) => a.data.category === category)
+    .sort((a, b) => a.data.order - b.data.order || a.data.pubDate.valueOf() - b.data.pubDate.valueOf()),
+}));
+// ItemList in the exact visible order — no hidden entries.
+const ordered = grouped.flatMap((g) => g.items);
+
+const base = (Astro.site ?? new URL(Astro.url.origin)).href.replace(/\/$/, '');
+const description =
+  'Plain-language answers to the technology, AI and operating-model questions behind major business decisions — a working reference for executives, added to over time.';
+
+const jsonLd = collectionPageLd({
+  base,
+  url: `${base}/knowledge/`,
+  name: 'Knowledge — executive technology questions',
+  description,
+  items: ordered.map((a) => ({ name: a.data.question, url: `${base}/knowledge/${a.id}/` })),
+});
+---
+
+<Base title="Knowledge — Executive technology questions | Fyrefish" description={description} jsonLd={jsonLd}>
+  <Nav />
+  <main class="hub" id="main">
+    <div class="container">
+      <header class="hub__head">
+        <p class="eyebrow reveal">Knowledge</p>
+        <h1 class="reveal" data-delay="1">Answers to the questions executives actually ask.</h1>
+        <p class="lead reveal" data-delay="1">
+          Plain-language answers to the technology, AI and operating-model questions behind major
+          business decisions. Each page takes a single question and answers it directly, then connects
+          to the thinking around it — a working reference, added to over time.
+        </p>
+      </header>
+
+      <div class="hub__topics">
+        {grouped.map((g) => (
+          <section class="topic reveal">
+            <h2 class="topic__name">{g.category}</h2>
+            <ul class="topic__list">
+              {g.items.map((a) => (
+                <li>
+                  <a href={`/knowledge/${a.id}/`}>
+                    <span class="q">{a.data.question}</span>
+                    <span class="q__answer">{a.data.summary}</span>
+                    <span class="link-arrow">Read <span class="btn__arrow" aria-hidden="true">→</span></span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+
+      <p class="hub__feed reveal">
+        Follow new entries via <a class="link-arrow" href="/rss.xml">RSS <span class="btn__arrow" aria-hidden="true">→</span></a>
+      </p>
+    </div>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .hub { padding-top: clamp(8rem, 14vh, 11rem); padding-bottom: var(--section-y); }
+  .hub__head { max-width: 48ch; margin-bottom: clamp(3.5rem, 7vw, 5.5rem); }
+  .hub__head h1 { font-size: var(--fs-h2); margin-bottom: 1.2rem; }
+  .hub__head .lead { max-width: 56ch; }
+
+  .hub__topics { display: grid; gap: clamp(2.75rem, 5.5vw, 4.5rem); }
+  .topic__name {
+    font-size: 0.82rem;
+    font-weight: 650;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal);
+    padding-bottom: 1.1rem;
+    margin-bottom: 0.25rem;
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .topic__list { list-style: none; padding: 0; margin: 0; }
+  .topic__list li { border-bottom: 1px solid var(--line); }
+  .topic__list a {
+    display: grid;
+    gap: 0.5rem;
+    padding: clamp(1.35rem, 3vw, 1.85rem) 0;
+  }
+  .q {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: var(--text-strong);
+    transition: color 0.2s var(--ease);
+    max-width: 24ch;
+    text-wrap: balance;
+  }
+  .topic__list a:hover .q { color: var(--teal-deep); }
+  .q__answer { color: var(--text-muted); font-size: var(--fs-body); line-height: 1.5; max-width: 62ch; }
+  .topic__list .link-arrow { font-size: 0.92rem; }
+
+  .hub__feed { margin-top: clamp(3.5rem, 6vw, 5rem); color: var(--text-muted); }
+
+  @media (max-width: 640px) {
+    .q { max-width: none; }
+  }
+</style>

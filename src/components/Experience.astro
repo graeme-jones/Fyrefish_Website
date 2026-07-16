@@ -1,142 +1,9 @@
 ---
-const stories = [
-  {
-    sector: 'Non-Profit',
-    title: 'The roadmap that was never written',
-    open: [
-      `"That's where I want it."`,
-      `He pointed to a blank wall behind his desk.`,
-      `"Five feet wide. Four feet high. A glossy five-year technology roadmap."`,
-    ],
-    paras: [
-      `He had waited almost two years to secure the budget. Now, finally, he had brought me in specifically to help create it.`,
-      `I expected a fairly normal engagement: assess the systems, map the gaps, sequence the investments and eventually hang something impressive on that wall.`,
-      `And I started where I always start.`,
-      `Not with the technology.`,
-      `With the business.`,
-      `"What are your business objectives over the next five years?"`,
-      `The answer surprised me.`,
-      `There really wasn't a strategic business agenda — not in the way the question assumed. The organization wasn't trying to expand. They weren't entering new markets. They weren't reducing headcount. They already served most of their industry.`,
-      `Technology had nothing obvious to align itself with.`,
-      `For a moment, I genuinely wondered why they had hired me at all.`,
-      `Then leadership kept returning to the same frustration: how hard it was to answer questions from the Board.`,
-      `The information wasn't missing. It existed.`,
-      `But every answer had to be assembled by hand. Some of it lived in business systems. Some in spreadsheets. Some buried inside documents.`,
-      `People were spending their time collecting information rather than understanding it.`,
-      `That was the real problem.`,
-      `It wasn't reporting.`,
-      `It was visibility.`,
-      `That became the turning point.`,
-      `Instead of producing a five-year technology roadmap, we started talking about the information leadership actually needed to run the organization. What decisions were hard to make today? What took days to assemble? Which questions could no one answer with confidence?`,
-      `Once those questions were on the table, the roadmap almost became secondary.`,
-      `We focused on the next 30 days. Then 60. Then 90. Six months. A year.`,
-      `Beyond that, we talked about direction rather than detailed plans. Technology evolves too quickly to pretend anyone can accurately prescribe the next five years — especially now, in the age of AI. A glossy plan on the wall would have been out of date before it could be printed and framed.`,
-      `The confirmation came from an unlikely place.`,
-      `A software engineer had been approved to spend six months reorganizing SharePoint — for an organization of only eleven people.`,
-      `At first, the effort simply seemed excessive. Then I asked a different question.`,
-      `"What, exactly, is stored in SharePoint?"`,
-      `The answer changed everything.`,
-      `It wasn't just documents. It was the organization's operational knowledge.`,
-      `Data had been pulled out of operational systems. Analysed in spreadsheets. Summarized into reports. Then filed back into SharePoint — because that was where people knew to look for it.`,
-      `Their most valuable business information no longer lived inside the systems that ran the business. It had quietly become documents.`,
-      `I checked that understanding with them, and suddenly their reporting struggles made complete sense.`,
-      `They didn't need a better SharePoint. They didn't need someone to reorganize documents.`,
-      `They needed operational information to stay operational — and only then should reporting sit on top of it.`,
-      `So I suggested we build a simple visual mock-up. Not because they'd asked for software, but because I thought it would help leadership see what real operational visibility could feel like.`,
-      `While building it, I made another discovery.`,
-      `The business itself was remarkably simple.`,
-      `Almost all of the complexity lived in the tangle of systems supporting the work — not in the work itself.`,
-      `What started as a reporting prototype slowly became something larger. The question quietly shifted. It stopped being "which system should we add?" and became "how should we simplify the landscape altogether?"`,
-      `I'll leave out the details of what we eventually built. That was never really the point.`,
-      `Because looking back, I don't think they hired me to produce a roadmap.`,
-      `I think they hired me to help them understand which problems were actually worth solving.`,
-    ],
-    lesson: [
-      `The best time to challenge a technology decision is before the organization has committed to solving the wrong problem.`,
-    ],
-  },
-  {
-    sector: 'Service Operations',
-    title: "Don't automate ambiguity",
-    open: [
-      `The same customer called every day for two weeks.`,
-      `Everyone tried to help.`,
-      `Nobody could solve the problem.`,
-      `Because there wasn't actually a problem to solve.`,
-    ],
-    paras: [
-      `A regional telecommunications provider hired me to improve their Trouble-to-Resolution process.`,
-      `Leadership believed they had a communication problem. Tier 1 couldn't reliably engage Tier 2. Tier 2 struggled to coordinate with Tier 3. Engineering was called in too late when they were genuinely needed, and too often when they were not.`,
-      `The proposed solutions were exactly what many organizations would reach for. Better call scripts. Better escalation procedures. Better collaboration software. Perhaps even replacing the platform the teams used to talk to one another.`,
-      `Rather than proposing solutions immediately, I started where I always start.`,
-      `I listened.`,
-      `I reviewed recorded support calls and transcripts. After roughly ten calls, I stopped.`,
-      `Not because I had enough data. Because I'd become convinced they were trying to solve the wrong problem.`,
-      `So I asked representatives from every support tier, along with Engineering leadership, to walk me through how a customer issue actually moved through the organization.`,
-      `As they described it, something became obvious.`,
-      `The communication platform wasn't failing. The operating model was.`,
-      `No one had clearly defined which issues belonged to Tier 1. What Tier 2 was actually expected to diagnose. What authority Tier 3 held. When Engineering should be involved. What "within specification" even meant. Or when a customer issue should simply be considered resolved.`,
-      `One example captured it perfectly.`,
-      `A customer called every single day, complaining that they weren't receiving one-gigabit wireless speeds. Support kept treating it as an unresolved technical fault.`,
-      `Except it wasn't.`,
-      `Engineering had designed the service to deliver one gigabit to the wall. The wireless equipment itself was physically incapable of reaching those speeds. Sales had promised "one-gigabit wireless." And Support had never been given permission to explain the engineering reality.`,
-      `Every team behaved rationally. Every team worked hard. Every team followed its own incentives.`,
-      `And every team failed.`,
-      `Not because they lacked good people. Because nobody had agreed what success actually looked like.`,
-      `The answer wasn't new software. It wasn't better chat. It wasn't more automation.`,
-      `The organization first needed to define its service boundaries. Its SLAs. Its ownership model. Its escalation rules. Its diagnostic authority. The responsibilities of every support tier.`,
-      `Only then would technology reinforce the process instead of amplifying the confusion.`,
-      `That engagement permanently changed the way I think about operational improvement.`,
-      `Software cannot resolve ambiguity. It only executes the rules an organization has already agreed upon.`,
-      `If people don't know who owns a decision, what success looks like, or when a problem is actually solved, no collaboration platform, workflow engine or AI assistant will fix it.`,
-      `The first step is always clarity.`,
-      `Automation comes second.`,
-    ],
-    lesson: [
-      `Technology cannot compensate for an undefined operating model.`,
-      `Before investing in automation, make sure the people, responsibilities, incentives and decision boundaries are already aligned.`,
-    ],
-  },
-  {
-    sector: 'Enterprise Software',
-    title: 'When listening to users leads you astray',
-    open: [
-      `"I work on paths."`,
-      `It was not the answer I expected.`,
-      `I had asked people to organize themselves by profession.`,
-      `No one said, "I'm a transport engineer." No one said, "I'm on the RAN engineering team."`,
-      `Instead, they described themselves using the objects inside our software.`,
-    ],
-    paras: [
-      `I was leading the complete redesign of a large enterprise application.`,
-      `The product had been built years earlier around a traditional, screen-oriented interface. We weren't simply modernizing the technology. We were rethinking, from the ground up, how enterprise software should guide people through their work.`,
-      `Instead of exposing database objects and expecting people to navigate between them, we wanted software that led them through complete tasks. Workflows. Automation. Visualization. A framework our customers could extend without having to rewrite the product.`,
-      `Before committing to the design, we spent three days with one of our largest customers.`,
-      `The plan was simple. Observe experienced users. Understand how they actually did their jobs. Then design the product around real work instead of our assumptions.`,
-      `The workshop was carefully planned. Multiple UX facilitators. Breakout sessions. Well-defined agendas. Everything a textbook research exercise should have.`,
-      `Which is why those introductions unsettled me. People identified themselves by the objects inside our software, not by the engineering work they were there to do. It was subtle. But it didn't feel right, and I couldn't quite explain why.`,
-      `By the second day, the UX team came back energized. They had pages of suggestions. Users wanted buttons moved. Fields reorganized. Navigation simplified. More shortcuts. By every normal measure, it looked like a successful piece of research.`,
-      `Except something still bothered me.`,
-      `So I asked to sit directly with the users myself. And I stopped asking them how they used our software. Instead, I asked a different question.`,
-      `"What are you actually trying to accomplish?"`,
-      `The answers surprised me.`,
-      `Many of them couldn't really describe the engineering work itself. Instead, they described which fields they copied. Which screens they visited. Which buttons they clicked, and in what order.`,
-      `Their expertise had become the software.`,
-      `Somewhere over the years, they had unconsciously stopped thinking like transport engineers. They had become experts at operating our application instead.`,
-      `That realization completely changed how I thought about product management.`,
-      `The UX team hadn't failed. The users hadn't given bad feedback. Everyone had done exactly what they were supposed to do.`,
-      `The mistake was mine.`,
-      `I had assumed that experienced users naturally understood the business process. In reality, they had adapted themselves to the software we'd given them. Their suggestions optimized the tool they already had — not the engineering work they were actually there to perform.`,
-      `From that point forward, our design philosophy changed. Instead of asking, "How should this screen work?" we started asking, "What job is this person trying to complete?"`,
-      `The software became task-oriented rather than screen-oriented. And it was better for it.`,
-      `The lesson has stayed with me ever since. Whenever someone tells me, "Our users want…", my next question is always the same: "What are they actually trying to accomplish?"`,
-    ],
-    lesson: [
-      `Users can become experts in the software they were given. That does not mean the software still reflects the work the business needs them to do.`,
-      `Before investing in what users are asking for, make sure they are describing the underlying work — not merely the system they have learned to operate.`,
-    ],
-  },
-];
+// Homepage Experience section — compact cards only. Full narratives live on
+// dedicated pages at /experience/<slug>/. Keeps the homepage short on mobile.
+import { getPublishedStories, readingMinutes } from '../lib/knowledge';
+
+const stories = await getPublishedStories();
 ---
 
 <section class="section section--dark experience" id="experience">
@@ -147,48 +14,47 @@ const stories = [
       <p class="lead">The ideas on this site weren't developed in a boardroom. They were earned solving real business problems — often very different from the ones clients thought they had.</p>
     </div>
 
-    <div class="stories">
+    <ul class="xcards">
       {stories.map((s) => (
-        <article class="story reveal">
-          <div class="story__meta">
-            <span class="story__sector">{s.sector}</span>
-          </div>
-          <div class="story__content">
-            <h3>{s.title}</h3>
-            {s.open && (
-              <div class="story__open">
-                {s.open.map((p) => <p>{p}</p>)}
-              </div>
-            )}
-            <div class="story__prose">
-              {s.paras.map((p) => <p>{p}</p>)}
-            </div>
-            {s.lesson && (
-              <div class="story__lesson">
-                <span class="story__lesson-label">What this taught me</span>
-                {s.lesson.map((p) => <p>{p}</p>)}
-              </div>
-            )}
-          </div>
-        </article>
+        <li class="reveal">
+          <article class="xcard">
+            <p class="xcard__cat">{s.data.category}</p>
+            <a class="xcard__title" href={`/experience/${s.id}/`}>{s.data.title}</a>
+            <p class="xcard__hook">{s.data.hook[0]}</p>
+            <p class="xcard__excerpt">{s.data.homepageExcerpt}</p>
+            <p class="xcard__foot">
+              <a class="link-arrow" href={`/experience/${s.id}/`}>Read the story <span class="btn__arrow" aria-hidden="true">→</span></a>
+              <span class="xcard__read">{readingMinutes(s.body, s.data.readingTime)} min read</span>
+            </p>
+          </article>
+        </li>
       ))}
-    </div>
+    </ul>
+
+    <p class="experience__all reveal">
+      <a class="link-arrow" href="/experience/">All experience stories <span class="btn__arrow" aria-hidden="true">→</span></a>
+    </p>
   </div>
 </section>
 
 <style>
-  .stories { display: grid; gap: 0; }
-  .story {
+  .xcards {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: grid;
-    grid-template-columns: minmax(0, 0.4fr) minmax(0, 1.6fr);
-    gap: clamp(1.25rem, 4vw, 4rem);
-    padding: clamp(4.5rem, 9vw, 8rem) 0;
-    border-top: 1px solid var(--ink-hair);
+    gap: 0;
   }
-  .story:first-child { border-top: none; padding-top: 0; }
-
-  .story__sector {
-    display: inline-block;
+  .xcards > li { border-top: 1px solid var(--ink-hair); }
+  .xcard {
+    display: grid;
+    grid-template-columns: minmax(0, 0.32fr) minmax(0, 1.68fr);
+    gap: clamp(1rem, 4vw, 3.5rem);
+    padding: clamp(2.25rem, 4.5vw, 3.5rem) 0;
+    align-items: start;
+  }
+  .xcard__cat {
+    grid-column: 1;
     padding-top: 0.5rem;
     font-weight: 650;
     font-size: 0.78rem;
@@ -196,72 +62,53 @@ const stories = [
     text-transform: uppercase;
     color: var(--teal-bright);
   }
-  .story__content h3 {
-    font-size: clamp(1.8rem, 3.4vw, 2.65rem);
-    line-height: 1.05;
-    margin-bottom: clamp(2rem, 3.5vw, 2.75rem);
-    letter-spacing: -0.025em;
-    max-width: 18ch;
-    text-wrap: balance;
-  }
-
-  /* Editorial cold open — the hook. Brighter and larger than the body, set on
-     a narrower measure and closed by a hairline rule. Restrained, not decorative. */
-  .story__open {
-    max-width: 32ch;
-    margin-bottom: clamp(2.25rem, 4vw, 3rem);
-    padding-bottom: clamp(2rem, 3.5vw, 2.5rem);
-    border-bottom: 1px solid var(--ink-hair);
-    color: var(--text-on-dark);
-    font-size: clamp(1.35rem, 2.1vw, 1.7rem);
-    line-height: 1.4;
-    letter-spacing: -0.018em;
-    font-weight: 450;
-  }
-  .story__open p + p { margin-top: 0.75em; }
-
-  .story__prose {
-    color: var(--text-on-dark-muted);
-    font-size: clamp(1.1rem, 1.5vw, 1.25rem);
-    line-height: 1.7;
-    max-width: 54ch;
-  }
-  .story__prose p + p { margin-top: 1.15em; }
-
-  /* Distilled lesson — set apart by a rule and a quiet label. Understated. */
-  .story__lesson {
-    margin-top: clamp(2.5rem, 4vw, 3.25rem);
-    padding-top: clamp(1.5rem, 2.5vw, 2rem);
-    border-top: 1px solid var(--ink-hair);
-    max-width: 48ch;
-  }
-  .story__lesson-label {
-    display: block;
-    font-size: 0.72rem;
-    font-weight: 650;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--teal-bright);
-    margin-bottom: 1rem;
-  }
-  .story__lesson p {
+  .xcard__title {
+    grid-column: 2;
     font-family: var(--font-display);
-    font-size: clamp(1.2rem, 1.7vw, 1.4rem);
-    line-height: 1.5;
+    font-weight: 700;
+    font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+    line-height: 1.06;
+    letter-spacing: -0.025em;
     color: var(--text-on-dark);
-    letter-spacing: -0.015em;
+    max-width: 20ch;
+    transition: color 0.2s var(--ease);
   }
-  .story__lesson p + p {
-    margin-top: 1rem;
-    font-family: var(--font-body);
-    font-size: clamp(1.02rem, 1.4vw, 1.12rem);
-    line-height: 1.6;
+  .xcard__title:hover { color: var(--teal-bright); }
+  .xcard__hook {
+    grid-column: 2;
+    margin-top: 0.9rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.15rem, 1.9vw, 1.4rem);
+    line-height: 1.35;
+    color: var(--text-on-dark);
+    max-width: 32ch;
+  }
+  .xcard__excerpt {
+    grid-column: 2;
+    margin-top: 0.9rem;
     color: var(--text-on-dark-muted);
-    letter-spacing: normal;
+    font-size: clamp(1.02rem, 1.4vw, 1.15rem);
+    line-height: 1.6;
+    max-width: 56ch;
   }
+  .xcard__foot {
+    grid-column: 2;
+    margin-top: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.6rem 1.4rem;
+  }
+  .xcard__foot .link-arrow { color: var(--teal-bright); }
+  .xcard__read { font-size: 0.82rem; color: var(--text-on-dark-faint); }
+
+  .experience__all { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+  .experience__all .link-arrow { color: var(--teal-bright); }
 
   @media (max-width: 760px) {
-    .story { grid-template-columns: 1fr; gap: 1rem; }
-    .story__sector { padding-top: 0; margin-bottom: 0.75rem; }
+    .xcard { grid-template-columns: 1fr; gap: 0.55rem; }
+    .xcard__cat { grid-column: 1; padding-top: 0; margin-bottom: 0.4rem; }
+    .xcard__title, .xcard__hook, .xcard__excerpt, .xcard__foot { grid-column: 1; }
   }
 </style>

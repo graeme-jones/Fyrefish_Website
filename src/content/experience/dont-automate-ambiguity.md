@@ -1,0 +1,74 @@
+---
+title: "Don't automate ambiguity"
+category: "Service Operations"
+order: 2
+pubDate: 2026-07-16
+hook:
+  - "The same customer called every day for two weeks."
+  - "Everyone tried to help."
+  - "Nobody could solve the problem."
+  - "Because there wasn't actually a problem to solve."
+homepageExcerpt: "A telecoms provider was sure it had a communication problem between its support tiers. Listening to the calls revealed something else: no one had agreed who owned which decision, or what \"resolved\" even meant. The platform wasn't failing. The operating model was."
+intro: "A regional telecommunications provider hired me to fix how its support tiers escalated problems — leadership was sure the issue was communication. But after listening to a handful of calls, a different picture emerged. No one had defined who owned which decision, what each tier should diagnose, or when an issue was actually resolved. One customer called every day about speeds the equipment could never deliver. Every team worked hard and still failed, because nobody had agreed what success looked like."
+lesson:
+  - "Technology cannot compensate for an undefined operating model."
+  - "Before investing in automation, make sure the people, responsibilities, incentives and decision boundaries are already aligned."
+relatedKnowledge:
+  - "why-digital-transformations-fail"
+  - "what-is-an-operating-model"
+  - "is-technology-really-the-problem"
+seoTitle: "Don't Automate Ambiguity | Graeme Jones"
+metaDescription: "Why a telecoms support-escalation problem turned out to be an undefined operating model, not a communication tool — and why software cannot resolve ambiguity."
+---
+
+A regional telecommunications provider hired me to improve their Trouble-to-Resolution process.
+
+Leadership believed they had a communication problem. Tier 1 couldn't reliably engage Tier 2. Tier 2 struggled to coordinate with Tier 3. Engineering was called in too late when they were genuinely needed, and too often when they were not.
+
+The proposed solutions were exactly what many organizations would reach for. Better call scripts. Better escalation procedures. Better collaboration software. Perhaps even replacing the platform the teams used to talk to one another.
+
+Rather than proposing solutions immediately, I started where I always start.
+
+I listened.
+
+I reviewed recorded support calls and transcripts. After roughly ten calls, I stopped.
+
+Not because I had enough data. Because I'd become convinced they were trying to solve the wrong problem.
+
+So I asked representatives from every support tier, along with Engineering leadership, to walk me through how a customer issue actually moved through the organization.
+
+As they described it, something became obvious.
+
+The communication platform wasn't failing. The operating model was.
+
+No one had clearly defined which issues belonged to Tier 1. What Tier 2 was actually expected to diagnose. What authority Tier 3 held. When Engineering should be involved. What "within specification" even meant. Or when a customer issue should simply be considered resolved.
+
+One example captured it perfectly.
+
+A customer called every single day, complaining that they weren't receiving one-gigabit wireless speeds. Support kept treating it as an unresolved technical fault.
+
+Except it wasn't.
+
+Engineering had designed the service to deliver one gigabit to the wall. The wireless equipment itself was physically incapable of reaching those speeds. Sales had promised "one-gigabit wireless." And Support had never been given permission to explain the engineering reality.
+
+Every team behaved rationally. Every team worked hard. Every team followed its own incentives.
+
+And every team failed.
+
+Not because they lacked good people. Because nobody had agreed what success actually looked like.
+
+The answer wasn't new software. It wasn't better chat. It wasn't more automation.
+
+The organization first needed to define its service boundaries. Its SLAs. Its ownership model. Its escalation rules. Its diagnostic authority. The responsibilities of every support tier.
+
+Only then would technology reinforce the process instead of amplifying the confusion.
+
+That engagement permanently changed the way I think about operational improvement.
+
+Software cannot resolve ambiguity. It only executes the rules an organization has already agreed upon.
+
+If people don't know who owns a decision, what success looks like, or when a problem is actually solved, no collaboration platform, workflow engine or AI assistant will fix it.
+
+The first step is always clarity.
+
+Automation comes second.
