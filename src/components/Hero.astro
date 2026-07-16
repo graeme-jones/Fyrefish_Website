@@ -1,8 +1,23 @@
 ---
-// Hero — two-column: executive headline + abstract "operating model" visual.
+// Hero — full-bleed light-thread motion on black, executive headline over it.
 ---
 
 <section class="hero" id="main">
+  <div class="hero__media" aria-hidden="true">
+    <video
+      class="hero__wave"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      poster="/wave-poster.jpg"
+    >
+      <source src="/wave.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="hero__scrim" aria-hidden="true"></div>
+
   <div class="container hero__grid">
     <div class="hero__content">
       <p class="eyebrow on-dark reveal">Executive Advisory</p>
@@ -24,102 +39,56 @@
         <span class="hero__by-role">Executive Advisor · Business &amp; Technology Strategy</span>
       </div>
     </div>
-
-    <div class="hero__visual reveal" data-delay="2" aria-hidden="true">
-      <svg viewBox="0 0 600 600" class="hero__svg" role="img" aria-label="Abstract diagram: scattered inputs resolving into clear, ordered outputs through the business operating model">
-        <defs>
-          <linearGradient id="hv-in" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#e04a3a" stop-opacity="0"/>
-            <stop offset="0.5" stop-color="#e04a3a" stop-opacity="0.85"/>
-            <stop offset="1" stop-color="#e0705a" stop-opacity="0.4"/>
-          </linearGradient>
-          <linearGradient id="hv-out" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#5ac8c1" stop-opacity="0.95"/>
-            <stop offset="0.7" stop-color="#42b0aa" stop-opacity="0.6"/>
-            <stop offset="1" stop-color="#42b0aa" stop-opacity="0.1"/>
-          </linearGradient>
-          <linearGradient id="hv-panel" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#42b0aa" stop-opacity="0.16"/>
-            <stop offset="1" stop-color="#1f6360" stop-opacity="0.05"/>
-          </linearGradient>
-          <radialGradient id="hv-glow" cx="0.5" cy="0.5" r="0.5">
-            <stop offset="0" stop-color="#2c8a86" stop-opacity="0.28"/>
-            <stop offset="1" stop-color="#2c8a86" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-
-        <circle cx="300" cy="300" r="290" fill="url(#hv-glow)"/>
-
-        <!-- Sculptural layers: stacked translucent planes -->
-        <g class="hv-layers">
-          <rect x="196" y="150" width="208" height="300" rx="26" fill="url(#hv-panel)" stroke="rgba(66,176,170,0.28)" stroke-width="1" transform="translate(38 34)"/>
-          <rect x="196" y="150" width="208" height="300" rx="26" fill="url(#hv-panel)" stroke="rgba(66,176,170,0.34)" stroke-width="1" transform="translate(19 17)"/>
-          <rect x="196" y="150" width="208" height="300" rx="26" fill="url(#hv-panel)" stroke="rgba(66,176,170,0.55)" stroke-width="1.2"/>
-          <!-- inner strata lines on the front panel -->
-          <g stroke="rgba(66,176,170,0.22)" stroke-width="1">
-            <line x1="216" y1="225" x2="384" y2="225"/>
-            <line x1="216" y1="300" x2="384" y2="300"/>
-            <line x1="216" y1="375" x2="384" y2="375"/>
-          </g>
-        </g>
-
-        <!-- Complexity in: scattered coral threads converging toward the panel -->
-        <g fill="none" stroke="url(#hv-in)" stroke-width="1.6" class="hv-in">
-          <path d="M-10 120 C 90 140, 150 210, 200 232"/>
-          <path d="M-10 190 C 100 150, 150 250, 200 268"/>
-          <path d="M-10 250 C 90 300, 150 280, 200 300"/>
-          <path d="M-10 330 C 110 300, 150 320, 200 332"/>
-          <path d="M-10 400 C 90 360, 150 360, 200 368"/>
-          <path d="M-10 470 C 110 430, 150 400, 200 400"/>
-        </g>
-
-        <!-- Clarity out: threads converge to a single clear decision -->
-        <g fill="none" stroke="url(#hv-out)" stroke-width="2.2" stroke-linecap="round" class="hv-out">
-          <path d="M400 240 C 505 240, 545 300, 598 300"/>
-          <path d="M400 280 C 505 280, 555 300, 598 300"/>
-          <path d="M400 320 C 505 320, 555 300, 598 300"/>
-          <path d="M400 360 C 505 360, 545 300, 598 300"/>
-        </g>
-
-        <!-- Nodes at the panel edge + the single resolved decision point -->
-        <g fill="#5ac8c1">
-          <circle cx="400" cy="240" r="3.2"/>
-          <circle cx="400" cy="280" r="3.2"/>
-          <circle cx="400" cy="320" r="3.2"/>
-          <circle cx="400" cy="360" r="3.2"/>
-        </g>
-        <circle cx="598" cy="300" r="14" fill="#5ac8c1" opacity="0.18"/>
-        <circle cx="598" cy="300" r="6.5" fill="#6fd6ce"/>
-        <g fill="#e04a3a">
-          <circle cx="200" cy="232" r="2.6"/>
-          <circle cx="200" cy="268" r="2.6"/>
-          <circle cx="200" cy="300" r="2.6"/>
-          <circle cx="200" cy="332" r="2.6"/>
-          <circle cx="200" cy="368" r="2.6"/>
-          <circle cx="200" cy="400" r="2.6"/>
-        </g>
-      </svg>
-    </div>
   </div>
 </section>
 
 <style>
+  /* Pure black so the video's own black background is seamless — no visible box. */
   .hero {
     position: relative;
-    background:
-      radial-gradient(120% 90% at 78% 20%, rgba(31,99,96,0.35), transparent 60%),
-      var(--ink);
+    background: #000;
     color: var(--text-on-dark);
     overflow: hidden;
   }
-  .hero__grid {
-    display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
+
+  /* Full-bleed motion layer, centred. Spans the full viewport width so the clip's
+     baked-in left/right fades land at the screen edges on any monitor size. */
+  .hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: flex;
     align-items: center;
-    gap: clamp(2rem, 5vw, 5rem);
+    justify-content: center;
+    pointer-events: none;
+  }
+  .hero__wave {
+    width: 100%;
+    max-width: none;
+    height: auto;
+  }
+
+  /* Keeps the headline legible over the thread motion and grounds the section. */
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      linear-gradient(90deg, #000 0%, rgba(0,0,0,0.74) 30%, rgba(0,0,0,0) 60%),
+      linear-gradient(0deg, rgba(0,0,0,0.65) 0%, transparent 26%),
+      radial-gradient(120% 80% at 50% 50%, transparent 55%, rgba(0,0,0,0.55) 100%);
+  }
+
+  .hero__grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    align-items: center;
     padding-block: clamp(8rem, 15vh, 11rem) clamp(4.5rem, 9vw, 7rem);
     min-height: 760px;
   }
+  .hero__content { max-width: 44rem; }
   .hero__title {
     color: var(--text-on-dark);
     font-size: var(--fs-display);
@@ -149,16 +118,32 @@
   .hero__by-name { font-family: var(--font-display); font-weight: 700; font-size: 1.02rem; }
   .hero__by-role { color: var(--text-on-dark-muted); font-size: 0.9rem; }
 
-  .hero__visual { position: relative; }
-  .hero__svg { width: 100%; height: auto; overflow: visible; }
-
   @media (max-width: 900px) {
     .hero__grid {
-      grid-template-columns: 1fr;
-      min-height: 0;
-      padding-block: clamp(7rem, 18vh, 9rem) clamp(3.5rem, 8vw, 5rem);
-      gap: 3rem;
+      min-height: 620px;
+      padding-block: clamp(8rem, 20vh, 10rem) clamp(3.5rem, 8vw, 5rem);
     }
-    .hero__visual { order: -1; max-width: 440px; }
+    .hero__wave { width: 130%; }
+    /* Stronger vertical scrim on narrow screens where text sits over the threads. */
+    .hero__scrim {
+      background:
+        linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.35) 42%, transparent 70%),
+        radial-gradient(120% 80% at 50% 40%, transparent 45%, rgba(0,0,0,0.6) 100%);
+    }
+  }
+
+  /* Respect reduced-motion: the JS below pauses playback; the poster frame remains. */
+  @media (prefers-reduced-motion: reduce) {
+    .hero__wave { /* first frame / poster stays visible, no motion */ }
   }
 </style>
+
+<script>
+  // Honour prefers-reduced-motion — pause the ambient loop, keep the still frame.
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('video.hero__wave').forEach((v) => {
+      v.removeAttribute('autoplay');
+      v.pause();
+    });
+  }
+</script>
