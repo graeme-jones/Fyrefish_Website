@@ -17,7 +17,7 @@ const seo = {
 // Knowledge: one long-form article per executive question. The website is the
 // canonical source; LinkedIn is optional distribution.
 const articles = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/articles' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/articles' }),
   schema: z.object({
     // --- Visible, each with a distinct job (no repetition) ---
     title: z.string(), // H1 — the executive question
@@ -47,7 +47,7 @@ const articles = defineCollection({
 // Experience: the lived engagements that seeded the principles. Each is a full
 // narrative on its own page; the homepage shows only a compact card.
 const experience = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/experience' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/experience' }),
   schema: z.object({
     title: z.string(),
     category: z.string(), // sector label (e.g. "Non-Profit")

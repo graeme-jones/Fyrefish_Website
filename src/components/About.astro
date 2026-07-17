@@ -1,4 +1,7 @@
 ---
+import WorkshopArtifact from './WorkshopArtifact.astro';
+import aboutArtifact from '../assets/artifacts/about-whiteboard.png';
+
 const credentials = [
   '30+ years',
   'Ericsson · Global Telecoms',
@@ -39,6 +42,18 @@ const credentials = [
           underneath. Fyrefish is the distillation of that experience.
         </p>
       </div>
+
+      <div class="reveal" data-delay="2" style="margin-top: -30px">
+        <WorkshopArtifact
+          image={aboutArtifact}
+          alt="One of many strategy-workshop whiteboards from enterprise strategy, architecture and operating-model engagements."
+          label="Strategy Workshop"
+          maxWidth="25rem"
+        >
+          One of hundreds of whiteboards created during enterprise strategy, architecture and operating-model engagements over the past three decades.
+        </WorkshopArtifact>
+      </div>
+
       <ul class="about__creds reveal" data-delay="2">
         {credentials.map((c) => <li>{c}</li>)}
       </ul>

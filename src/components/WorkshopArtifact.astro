@@ -1,0 +1,67 @@
+---
+import { Image } from 'astro:assets';
+
+export interface Props {
+  image: ImageMetadata; // imported asset — optimized at build, content unchanged
+  alt: string;
+  label?: string; // e.g. "From the Workshop" / "Strategy Workshop"
+  maxWidth?: string; // CSS length; defaults to the in-story size
+}
+const { image, alt, label = 'From the Workshop', maxWidth = '600px' } = Astro.props;
+---
+
+<figure class="artifact" style={`--artifact-maxw: ${maxWidth}`}>
+  <Image
+    class="artifact__img"
+    src={image}
+    alt={alt}
+    widths={[600, 1200]}
+    sizes="(max-width: 660px) 92vw, 600px"
+    format="webp"
+    quality={78}
+    loading="lazy"
+    decoding="async"
+  />
+  <figcaption class="artifact__cap">
+    <span class="artifact__label">{label}</span>
+    <div class="artifact__text"><slot /></div>
+  </figcaption>
+</figure>
+
+<style>
+  /* An editorial photograph, not a hero. Evidence that supports the narrative:
+     modest width, centered, quiet frame, caption beneath. */
+  .artifact {
+    margin: clamp(2.5rem, 5vw, 3.75rem) auto;
+    max-width: var(--artifact-maxw, 600px);
+  }
+  .artifact__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid #d9d9d9;
+    box-shadow: 0 10px 30px -16px rgba(15, 25, 23, 0.28);
+  }
+  .artifact__cap {
+    margin-top: 0.9rem;
+    text-align: left;
+    max-width: 52ch;
+  }
+  .artifact__label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 650;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.4rem;
+  }
+  .artifact__text {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+  }
+  .artifact__text :global(p) { margin: 0; }
+  .artifact__text :global(p + p) { margin-top: 0.25rem; }
+</style>
