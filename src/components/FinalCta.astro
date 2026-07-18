@@ -1,4 +1,5 @@
 ---
+import { CAL_LINK } from '../lib/site-links';
 const CONTACT_EMAIL = 'graeme.jones@fyrefish.com';
 const subject = encodeURIComponent('Business Operating Model Review — enquiry');
 const mailto = `mailto:${CONTACT_EMAIL}?subject=${subject}`;
@@ -14,12 +15,12 @@ const mailto = `mailto:${CONTACT_EMAIL}?subject=${subject}`;
       A few focused weeks, before the next major technology, AI or automation commitment.
     </p>
     <div class="cta__actions reveal" data-delay="2">
-      <a class="btn btn--primary btn--lg" href={mailto}>
-        Let's talk <span class="btn__arrow" aria-hidden="true">→</span>
+      <a class="btn btn--primary btn--lg" href={CAL_LINK} target="_blank" rel="noopener noreferrer">
+        Book a 30-min call <span class="btn__arrow" aria-hidden="true">→</span>
       </a>
     </div>
     <p class="cta__contact reveal" data-delay="2">
-      <a href={mailto}>{CONTACT_EMAIL}</a>
+      Or email <a href={mailto}>{CONTACT_EMAIL}</a>
     </p>
   </div>
 </section>
